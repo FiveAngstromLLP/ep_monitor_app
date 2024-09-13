@@ -1,0 +1,8 @@
+{
+  "name": "employee-monitoring-app",
+  "version": "1.0.0",
+  "homepage": "https://fiveangstromllp.github.io/employee-monitoring-app",  // Add this
+  "scripts": {
+    "build": "react-scripts build"
+  }
+}
