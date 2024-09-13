@@ -1,0 +1,44 @@
+{
+  "package": {
+    "productName": "Employee Monitoring App",
+    "version": "1.0.0"
+  },
+  "tauri": {
+    "windows": [
+      {
+        "label": "main",
+        "url": "http://localhost:3000",
+        "fullscreen": false,
+        "resizable": true,
+        "title": "Employee Monitoring App",
+        "width": 800,
+        "height": 600
+      }
+    ],
+    "allowlist": {
+      "all": false,
+      "fs": {
+        "all": true,
+        "readFile": true,
+        "writeFile": true
+      },
+      "http": {
+        "all": true
+      }
+    },
+    "security": {
+      "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval';"
+    },
+    "bundle": {
+      "identifier": "com.modellinq.employeemonitoring",
+      "icon": [
+        "icons/icon.png"
+      ],
+      "targets": ["deb", "appimage", "msi", "dmg"],
+      "resources": [],
+      "category": "Utility",
+      "shortDescription": "Employee Monitoring App",
+      "longDescription": "An app that tracks employee activity and monitors applications."
+    }
+  }
+}
