@@ -8,35 +8,44 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
+      # Step 1: Checkout code
       - name: Checkout Code
         uses: actions/checkout@v3
 
+      # Step 2: Setup Rust toolchain
       - name: Setup Rust
         uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
           target: wasm32-unknown-unknown
 
+      # Step 3: Setup Node.js environment
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '16'
 
+      # Step 4: Install dependencies
       - name: Install Node.js Dependencies
         run: yarn install
 
+      # Step 5: Build the frontend (React app)
       - name: Build Frontend
         run: yarn build
 
+      # Step 6: Install Tauri CLI for building the desktop app
       - name: Install Tauri CLI
         run: cargo install tauri-cli
 
+      # Step 7: Build the Tauri app (this creates the desktop application)
       - name: Build Tauri App
         run: yarn tauri build
 
+      # Step 8: Upload the build artifacts
       - name: Upload Tauri Build
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: tauri-build
           path: src-tauri/target/release/bundle/
